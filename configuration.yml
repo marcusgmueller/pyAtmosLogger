@@ -1,0 +1,10 @@
+instrument:
+  instrumentFile: sds011.py
+  samplingInterval: 60
+  port: "COM1"
+station:
+ncAttributes:
+storage:
+  storagePath: "/mnt/c/Users/marc.mueller/Desktop/test/"
+  datePath: "/%Y/%m/"
+  fileName: "%Y%m%d_tower_sds011.csv"
