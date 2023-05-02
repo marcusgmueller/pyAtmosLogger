@@ -17,7 +17,7 @@ pyAtmosLogger -m log -p configuration.yaml
 ```
 ## convert data to csv
 1. Set preferences in `configuration.yaml`
-2. run command (or shedule it with cron)
+2. run command (or schedule it with cron)
 ```
 pyAtmosLogger -m convert -p configuration.yaml
 ```
