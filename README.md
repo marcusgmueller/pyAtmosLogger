@@ -15,7 +15,7 @@ Python serial data logger for Atmospheric Application. This software allows the 
 ```
 pyAtmosLogger -m log -p configuration.yaml
 ```
-## convert data to csv
+## convert data to netCDF
 1. Set preferences in `configuration.yaml`
 2. run command (or schedule it with cron)
 ```
