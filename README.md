@@ -1,6 +1,6 @@
 # pyAtmosLogger
 > **Warning**
-> This software is in development and currently not working.
+> This software is in development.
 
 Python serial data logger for Atmospheric Application. This software allows the serial data logging for multiple types of atmospherical serial instruments with a simple python-based syntax. Data can be automaticly converted to NetCDF-fileformat.
 
