@@ -11,7 +11,7 @@ git clone https://github.com/marcusgmueller/pyAtmosLogger.git
 ```
 
 # Usage
-create custom `configuration.yaml` or use existing file at `pyAtmosLogger\configuration.yaml`
+create custom `configuration.yaml` or edit existing file at `pyAtmosLogger\configuration.yaml`. You can create multiple files for different instruments.
 ## run datalogger
 ```
 python3 pyAtmosLogger.py -m log -p configuration.yaml
