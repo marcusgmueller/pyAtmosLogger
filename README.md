@@ -11,15 +11,13 @@ git clone https://github.com/marcusgmueller/pyAtmosLogger.git
 ```
 
 # Usage
-1. change into `pyAtmosLogger` directory
-2. Set preferences in `configuration.yaml`
+create custom `configuration.yaml` or use existing file at `pyAtmosLogger\configuration.yaml`
 ## run datalogger
-3. run logger
 ```
 python3 pyAtmosLogger.py -m log -p configuration.yaml
 ```
 ## convert data to netCDF
-3. run command (or schedule it with cron)
+run command (or schedule it with cron)
 ```
 pyAtmosLogger -m convert -p configuration.yaml
 ```
