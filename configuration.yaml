@@ -1,0 +1,12 @@
+instrument:
+  instrumentFile: pyAtmosLogger_dummy_1.py
+  samplingInterval: 10
+attributes:
+  Title: "random dummy data"
+  Institution: "Test"
+  Measurement_site: "Test-Site"
+storage:
+  csvStoragePath: "./csv/"
+  DatePath: "%Y/%m/"
+  csvFileName: "%Y%m%d_tower_random.csv"
+  ncStoragePath: "./nc/"
