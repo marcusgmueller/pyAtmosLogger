@@ -10,15 +10,21 @@ def loadConfig(configPath):
     with open(configPath, 'r') as file:
         configuration = yaml.safe_load(file)
     return configuration
-
-def checkFolder(configuration):
-    dt = datetime.datetime.utcnow()
-    storagePath = configuration["storage"]["storagePath"]
-    Path(storagePath+dt.strftime(configuration["storage"]["datePath"])).mkdir(parents=True, exist_ok=True)
-    filePath = storagePath+dt.strftime(configuration["storage"]["datePath"])
-    filename = dt.strftime(configuration["storage"]["fileName"])
+def checkCsvFolder(configuration, datetime):
+    storagePath = configuration["storage"]["csvStoragePath"]
+    Path(storagePath+datetime.strftime(configuration["storage"]["DatePath"])).mkdir(parents=True, exist_ok=True)
+    filePath = storagePath+datetime.strftime(configuration["storage"]["DatePath"])
+    filename = datetime.strftime(configuration["storage"]["csvFileName"])
     return filePath+filename
-
-def getClassName(configPath):
+def checkNcFolder(configuration, filename):
+    string = filename[:-4]
+    string = string.replace(configuration["storage"]["csvStoragePath"],"")
+    datePath = string.rsplit("/", 1)[0]
+    fileName = string.rsplit("/", 1)[1]
+    storagePath = configuration["storage"]["ncStoragePath"]
+    Path(storagePath+datePath).mkdir(parents=True, exist_ok=True)
+    return storagePath+datePath+"/"+fileName+".nc"
+def getInstrumentFile(configPath):
     configuration = loadConfig(configPath)
-    return configuration["instrument"]["instrumentFile"][:-3]
+    return configuration["instrument"]["instrumentFile"]
+
