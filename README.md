@@ -19,5 +19,5 @@ python3 pyAtmosLogger.py -m log -p configuration.yaml
 ## convert data to netCDF
 run command (or schedule it with cron)
 ```
-pyAtmosLogger -m convert -p configuration.yaml
+python3 pyAtmosLogger.py -m convert -p configuration.yaml
 ```
