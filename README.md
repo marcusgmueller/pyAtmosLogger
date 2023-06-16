@@ -5,8 +5,10 @@
 Python serial data logger for Atmospheric Application. This software allows the serial data logging for multiple types of atmospherical serial instruments with a simple python-based syntax. Data can be automaticly converted to NetCDF-fileformat.
 
 # Installation
-1. Using Python-pip
-2. Using github-Release
+Download release or clone repository:
+```
+git clone https://github.com/marcusgmueller/pyAtmosLogger.git
+```
 
 # Usage
 ## run datalogger
