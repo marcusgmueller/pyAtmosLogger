@@ -58,9 +58,9 @@ class ott_parsivel2_default:
         #1D-Data
         keys = [ 'datetime_utc', 'rain rate [mm/h]', 'rain accum [mm]', 'wawa','Z [dBz]', 'MOR visibility [m]', 'sample interval [s]','Signal amplitude', 'Number of detected particles','Temperature sensor [°C]', 'Serial number', 'IOP firmware version','Current heating system [A]', 'Power supply voltage in the sensor [V]','Sensor status', 'Station name', 'Rain amount absolute [mm]','Error code']
         keysNew = [ 'datetime','rain_rate', 'rain_accum', 'wawa','Z', 'MOR_visibility', 'sample_interval','signal_amplitude', 'n_particles','T_sensor', 'serial_no', 'version','curr_heating', 'volt_sensor','status_sensor', 'station_name', 'rain_am','error_code']
-        singleDimensionDF = df[keys]
+        singleDimensionDF = df[keys].copy()
         singleDimensionDF.columns = keysNew
-        singleDimensionDF["datetime"] = pd.to_datetime(singleDimensionDF["datetime"], format = '%Y-%m-%d %H:%M:%S')
+        singleDimensionDF.loc[:,"datetime"] = pd.to_datetime(singleDimensionDF["datetime"], format = '%Y-%m-%d %H:%M:%S')
         singleDimensionDF.set_index(["datetime"], inplace=True)
         newDs = singleDimensionDF.to_xarray()
         ds = ds.merge(newDs)
@@ -99,10 +99,22 @@ class ott_parsivel2_default:
         newDF.set_index(["datetime", "d_class","v_class"], inplace=True)
         ds = ds.merge(newDF.to_xarray())
         #set attributes
-        ds["N"].attrs["units"] = "1/m3"
-        ds["N"].attrs["description"] = "mean volume equivalent diameter per preci class"
-        ds["V"].attrs["units"] = "m/s"
-        ds["V"].attrs["description"] = "mean falling velocity per preci class"
+        ds.rain_rate.attrs          = {'units': 'mm/h'}
+        ds.rain_accum.attrs         = {'units': 'mm'}
+        ds.wawa.attrs               = {'units': 'weather code'}
+        ds.Z.attrs                  = {'units': 'dB'}
+        ds.MOR_visibility.attrs     = {'units': 'm'}
+        ds.sample_interval.attrs    = {'units': 's'}
+        ds.signal_amplitude.attrs   = {'units': ''}
+        ds.n_particles.attrs        = {'units': '#', 'description': 'number of detected particles'}
+        ds.T_sensor.attrs           = {'units': 'deg C'}
+        ds.version.attrs            = {'description': 'IOP firmware version'}
+        ds.curr_heating.attrs       = {'units': 'A', 'description': 'Current heating system'}
+        ds.volt_sensor.attrs        = {'units': 'V', 'description': 'Power supply voltage in the sensor'}
+        ds.rain_am.attrs            = {'units': 'mm', 'description': 'rain amount absolute'}
+        ds.N.attrs                  = {'units': '1/m3', 'description': 'mean volume equivalent diameter per preci class'}
+        ds.V.attrs                  = {'units': 'm/s', 'description': 'mean falling velocity per preci class'}
+        ds.M.attrs                  = {'units': '', 'description': 'raw data matrix. number of particles per volume diameter and fall velocity'}
         for attr in self.configuration["attributes"]:
             ds.attrs[attr] = self.configuration["attributes"][attr]
         now = dt.datetime.now()
