@@ -10,3 +10,4 @@ storage:
   DatePath: "%Y/%m/"
   csvFileName: "%Y%m%d_tower_random.csv"
   ncStoragePath: "./nc/"
+  ncConversionDays: 2

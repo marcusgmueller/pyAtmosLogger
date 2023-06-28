@@ -1,0 +1,28 @@
+instrument:
+  instrumentFile: ott_parsivel2_default.py
+  samplingInterval: 60
+  port: "/dev/ttyUSB0"
+  baudrate: 19200
+  bytesize: 8
+  parity: "N"
+  stopbits: 1
+attributes:
+  Contact_person: "Marcus Müller, marc.mueller@fz-juelich.de"
+  Institution: "Forschungszentrum Jülich, IEK-8"
+  License: "For non-commercial use only"
+  Manufacturer: OTT
+  Measurement_altitude_AGL: 19.5
+  Measurement_altitude_AMSL: 111
+  Measurement_latitude: "50.91026538547442 N"
+  Measurement_longitude: "6.4095320825301405 E"
+  Measurement_site: Jülich Observatory for Cloud Evolution
+  Model: Parsivel2
+  serial_number: ""
+  Title: "JOYCE Parsivel2 Measurement"
+  Type: Distrometer
+storage:
+  csvStoragePath: "/home/marcus/data/parsivel2/csv/"
+  DatePath: "%Y/%m/"
+  csvFileName: "%Y%m%d_tower_random.csv"
+  ncStoragePath: "/home/marcus/data/parsivel2/netCDF/"
+  ncConversionDays: 2

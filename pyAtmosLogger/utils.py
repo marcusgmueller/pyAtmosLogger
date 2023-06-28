@@ -4,7 +4,7 @@ from pathlib import Path
 import os
 import importlib
 import time
-
+import datetime as dt
 
 def loadConfig(configPath):
     with open(configPath, 'r') as file:
@@ -27,4 +27,7 @@ def checkNcFolder(configuration, filename):
 def getInstrumentFile(configPath):
     configuration = loadConfig(configPath)
     return configuration["instrument"]["instrumentFile"]
+def consoleLog(message):
+    now = dt.datetime.utcnow()
+    print(now.strftime("%Y-%m-%d %H:%M:%S")+": "+message)
 

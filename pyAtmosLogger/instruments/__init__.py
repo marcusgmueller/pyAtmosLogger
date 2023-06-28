@@ -1,2 +1,3 @@
 from .sds011 import sds011
 from .pyAtmosLogger_dummy_1 import pyAtmosLogger_dummy_1
+from .ott_parsivel2_default import ott_parsivel2_default
