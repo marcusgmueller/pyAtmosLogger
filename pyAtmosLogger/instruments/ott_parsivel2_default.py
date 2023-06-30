@@ -1,12 +1,12 @@
 import sys
 sys.path.append('../../pyAtmosLogger')
-from pyAtmosLogger.utils import *
 import serial
 import datetime as dt
 import time
 import xarray as xr
 import pandas as pd
 import glob
+from ..utils.utils import *
 
 class ott_parsivel2_default:
 

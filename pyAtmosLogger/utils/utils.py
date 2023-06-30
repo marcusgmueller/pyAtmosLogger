@@ -30,4 +30,3 @@ def getInstrumentFile(configPath):
 def consoleLog(message):
     now = dt.datetime.utcnow()
     print(now.strftime("%Y-%m-%d %H:%M:%S")+": "+message)
-
