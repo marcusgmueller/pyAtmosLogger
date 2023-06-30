@@ -5,9 +5,10 @@
 Python data logger for Atmospheric Application. This software allows data logging for multiple types of atmospherical instruments with a simple python-based syntax. Data can be automaticly converted to NetCDF-fileformat. The instrument-directory contains two files for each instrument. The file ```<instrument_name>.py``` contains all instrumentspecific scripts and should not be changed by the user. The file  ```<instrument_name>.yaml``` is a configuration file. Here the user can customize the installation to his needs. Therefor he can copy the file to his prefered location and edit it.
 
 # Installation
-Download release or clone repository:
+1. Make sure you have installed Python and [PIP](https://pip.pypa.io/en/stable/)
+2. Install pyAtmosLogger
 ```
-git clone https://github.com/marcusgmueller/pyAtmosLogger.git
+pip install "pyAtmosLogger @ git+https://github.com/marcusgmueller/pyAtmosLogger"
 ```
 
 # Usage
