@@ -15,10 +15,10 @@ pip install "pyAtmosLogger @ git+https://github.com/marcusgmueller/pyAtmosLogger
 Copy the file ```<instrument_name>.yaml``` from instrument directory to a custom location. Customize this file to you needs.
 ## run datalogger
 ```
-python3 pyAtmosLogger.py -m log -p <path_to_instrument_name>.yaml
+pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
 ```
 ## convert data to netCDF
 run command (or schedule it with cron)
 ```
-python3 pyAtmosLogger.py -m log -p <path_to_instrument_name>.yaml
+pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
 ```
