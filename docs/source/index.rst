@@ -15,6 +15,7 @@ Contents
 
 .. toctree::
 
-   usage
-   instruments
+   installation
+   CLI
    api
+   changelog
