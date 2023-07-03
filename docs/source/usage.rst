@@ -6,29 +6,22 @@ Usage
 Installation
 ------------
 
-To use Lumache, first install it using pip:
+To use pyAtmosLogger, first install it using pip:
 
 .. code-block:: console
 
-   (.venv) $ pip install lumache
+   pip install "pyAtmosLogger @ git+https://github.com/marcusgmueller/pyAtmosLogger"
 
-Creating recipes
+General Usage
 ----------------
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
-
-.. autofunction:: lumache.get_random_ingredients
-
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
-
-.. autoexception:: lumache.InvalidKindError
-
-For example:
-
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
+Copy the file ```<instrument_name>.yaml``` from instrument directory to a custom location. Customize this file to you needs.
+## run datalogger
+```
+pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
+```
+## convert data to netCDF
+run command (or schedule it with cron)
+```
+pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
 
