@@ -16,6 +16,6 @@ Contents
 .. toctree::
 
    installation
-   CLI
+   cli
    api
    changelog
