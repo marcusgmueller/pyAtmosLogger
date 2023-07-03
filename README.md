@@ -1,4 +1,5 @@
 # pyAtmosLogger
+[![Documentation Status](https://readthedocs.org/projects/pyatmoslogger/badge/?version=latest)](https://pyatmoslogger.readthedocs.io/en/latest/?badge=latest)
 > **Warning**
 > This software is still in development.
 
