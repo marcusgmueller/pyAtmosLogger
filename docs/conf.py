@@ -34,3 +34,4 @@ html_theme = 'pydata_sphinx_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+html_logo = ""
