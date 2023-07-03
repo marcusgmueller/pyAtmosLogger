@@ -1,1 +1,5 @@
+Changelog
+===
 
+.. autosummary::
+   :toctree: generated

@@ -18,4 +18,5 @@ Contents
    installation
    cli
    api
+   instruments
    changelog
