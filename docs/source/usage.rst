@@ -16,12 +16,17 @@ General Usage
 ----------------
 
 Copy the file ```<instrument_name>.yaml``` from instrument directory to a custom location. Customize this file to you needs.
-## run datalogger
-```
-pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
-```
-## convert data to netCDF
+
+run datalogger
+~~~~~~~~~~~~
+
+.. code-block:: console
+   pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
+
+convert data to netCDF
+~~~~~~~~~~~~
+
 run command (or schedule it with cron)
-```
-pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
+.. code-block:: console
+   pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
 
