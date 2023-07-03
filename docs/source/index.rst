@@ -16,5 +16,5 @@ Contents
 .. toctree::
 
    usage
-   api
    instruments
+   api
