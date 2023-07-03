@@ -21,6 +21,7 @@ run datalogger
 ~~~~~~~~~~~~
 
 .. code-block:: console
+
    pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
 
 convert data to netCDF
@@ -28,5 +29,6 @@ convert data to netCDF
 
 run command (or schedule it with cron)
 .. code-block:: console
+
    pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
 
