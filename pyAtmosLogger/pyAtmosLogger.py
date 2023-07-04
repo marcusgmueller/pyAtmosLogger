@@ -11,7 +11,7 @@ def pyAtmosLogger():
     )
     parser.add_argument("-m", "--mode", help = "selct operation mode", choices=["log", "convert"], default="log")
     parser.add_argument("-p", "--path", help = "path to config file", required=True)
-    parser.add_argument("-d", "--days", help = "number of days to convert to netcdf", default=1)
+    
     args = vars(parser.parse_args())
     # select instrument class
     instrumentFile = getInstrumentFile(args["path"])
@@ -24,6 +24,5 @@ def pyAtmosLogger():
         instrument.log()
     if args["mode"] == "convert":
          instrument.convertMultipleFiles()
-if __name__ == '__main__':
-    pyAtmosLogger()
+
 

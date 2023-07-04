@@ -19,7 +19,6 @@ class ott_parsivel2_default:
     def __init__(self,configPath):
         self.configuration          = loadConfig(configPath)
         self.samplingInterval       = self.configuration["instrument"]["samplingInterval"]
-        self.serialConnect()
         consoleLog("setup completed")
     def serialConnect(self):
         self.connection             = Serial(self.configuration["instrument"]["port"])
@@ -28,6 +27,7 @@ class ott_parsivel2_default:
         self.connection.parity      = self.configuration["instrument"]["parity"]
         self.connection.stopbits    = self.configuration["instrument"]["stopbits"]
     def log(self):
+        self.serialConnect()
         consoleLog("logging started")
         while True:
             try:
