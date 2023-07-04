@@ -37,8 +37,7 @@ html_theme = 'pydata_sphinx_theme'
 epub_show_urls = 'footnote'
 
 html_theme_options = {
-   "logo": {
-      "image_light": "_static/images/pyAtmosLogger.png",
-      "image_dark": "_static/images/pyAtmosLogger.png",
-   }
+    "logo": {
+        "alt_text": "pyAtmosLogger",
+    }
 }
