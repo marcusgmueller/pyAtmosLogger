@@ -4,14 +4,14 @@ CLI
 General Usage
 ----------------
 
-Copy the file ```<instrument_name>.yaml``` from instrument directory to a custom location. Customize this file to you needs.
+Create a `<configuration_file>.yaml` file using the samples at :ref:`Supported Instruments` .
 
 run datalogger
 ~~~~~~~~~~~~
 
 .. code-block:: console
 
-   pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
+   pyAtmosLogger -m log -p <configuration_file>.yaml
 
 convert data to netCDF
 ~~~~~~~~~~~~
@@ -20,4 +20,4 @@ run command (or schedule it with cron)
 
 .. code-block:: console
 
-   pyAtmosLogger -m log -p <path_to_instrument_name>.yaml
+   pyAtmosLogger -m log -p <configuration_file>.yaml
