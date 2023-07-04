@@ -27,6 +27,7 @@ intersphinx_mapping = {
 intersphinx_disabled_domains = ['std']
 
 templates_path = ['_templates']
+html_static_path = ["_static"]
 
 # -- Options for HTML output
 
@@ -34,6 +35,7 @@ html_theme = 'pydata_sphinx_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
 html_theme_options = {
    "logo": {
       "image_light": "_static/images/pyAtmosLogger.png",

@@ -5,3 +5,6 @@ API
    :toctree: generated
 
    
+.. automodule:: pyAtmosLogger
+   :members:
+   :undoc-members:
