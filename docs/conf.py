@@ -1,5 +1,5 @@
 # Configuration file for the Sphinx documentation builder.
-import pydata_sphinx_theme
+import sphinx_book_theme
 # -- Project information
 
 project = 'pyAtmosLogger'
