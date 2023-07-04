@@ -1,6 +1,6 @@
 import sys
 sys.path.append('../../pyAtmosLogger')
-import serial
+from serial import Serial
 import datetime as dt
 import time
 import xarray as xr
@@ -22,7 +22,7 @@ class ott_parsivel2_default:
         self.serialConnect()
         consoleLog("setup completed")
     def serialConnect(self):
-        self.connection             = serial.Serial(self.configuration["instrument"]["port"])
+        self.connection             = Serial(self.configuration["instrument"]["port"])
         self.connection.baudrate    = self.configuration["instrument"]["baudrate"]
         self.connection.bytesize    = self.configuration["instrument"]["bytesize"]
         self.connection.parity      = self.configuration["instrument"]["parity"]
