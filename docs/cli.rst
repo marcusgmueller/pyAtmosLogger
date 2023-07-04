@@ -4,7 +4,7 @@ CLI
 General Usage
 ----------------
 
-Create a `<configuration_file>.yaml` file using the samples at :ref:`Supported Instruments` .
+Create a ``<configuration_file>.yaml`` file using the samples in section ``Supported Instruments``.
 
 run datalogger
 ~~~~~~~~~~~~
