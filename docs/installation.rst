@@ -3,7 +3,9 @@ Installation
 
 .. _installation:
 
-To use pyAtmosLogger, first install it using pip:
+1. Install Python 3
+2. Install Python Package Manager pip
+3. Install pyAtmosLogger
 
 .. code-block:: console
 
