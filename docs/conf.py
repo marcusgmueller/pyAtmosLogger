@@ -31,7 +31,7 @@ html_static_path = ["_static"]
 
 # -- Options for HTML output
 
-html_theme = 'pydata_sphinx_theme'
+html_theme = 'sphinx_book_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
