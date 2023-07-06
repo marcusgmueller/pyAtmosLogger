@@ -38,8 +38,4 @@ html_theme = 'sphinx_book_theme'
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 
-html_theme_options = {
-    "logo": {
-        "alt_text": "pyAtmosLogger",
-    }
-}
+html_logo = "_static/images/pyAtmosLogger.png"
