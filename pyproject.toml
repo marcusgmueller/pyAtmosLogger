@@ -11,15 +11,16 @@ packages = [{include = "pyAtmosLogger"}]
 pyAtmosLogger = "pyAtmosLogger.pyAtmosLogger:pyAtmosLogger"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 argparse = "^1.4"
 pyyaml = "^6.0"
 xarray = "^2022.03.0"
-pandas = "^2.0.3"
+pandas = "^1.0.3"
 sds011 = "^0.2.0"
 pySerial ="^3.4"
 scipy = "^1.7.2"
 numpy = "^1.18"
+
 
 [build-system]
 requires = ["poetry-core"]

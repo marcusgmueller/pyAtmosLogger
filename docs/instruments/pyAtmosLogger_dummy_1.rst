@@ -12,10 +12,10 @@ instrument.yaml
         samplingInterval: 60
     attributes:
     storage:
-        csvStoragePath: "/mnt/c/Users/marc.mueller/Desktop/dummy_data/csv/"
+        csvStoragePath: "~/Desktop/dummy_data/csv/"
         DatePath: "%Y/%m/"
         csvFileName: "%Y%m%d_tower_random.csv"
-        ncStoragePath: "/mnt/c/Users/marc.mueller/Desktop/dummy_data/nc/"
+        ncStoragePath: "~/Desktop/dummy_data/nc/"
         ncConversionDays: 1
 
 API

@@ -52,7 +52,7 @@ class pyAtmosLogger_dummy_1:
             file (str): file path to csv data
         """
         consoleLog("converting file: "+file)
-        df = pd.read_csv(file, delimiter=";", index_col=False)
+        df = pd.read_csv(file, delimiter=",", index_col=False)
         ds = xr.Dataset()
         df["utcDatetime"] = pd.to_datetime(df["utcDatetime"])
         df.set_index('utcDatetime', inplace=True)
