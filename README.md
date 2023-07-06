@@ -1,6 +1,9 @@
-# pyAtmosLogger
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation Status](https://readthedocs.org/projects/pyatmoslogger/badge/?version=latest)](https://pyatmoslogger.readthedocs.io/en/latest/?badge=latest)
+
+<img src="docs/_static/images/pyAtmosLogger.png" width="200" style="margin: 20px 10px"/>
+
+
 > **Warning**
 > This software is still in development.
 
