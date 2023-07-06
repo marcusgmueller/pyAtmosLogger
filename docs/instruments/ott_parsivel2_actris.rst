@@ -17,10 +17,10 @@ instrument.yaml
     stopbits: 1
   attributes:
   storage:
-    csvStoragePath: "/home/marcus/data/parsivel2/csv/"
+    csvStoragePath: "~/data/parsivel2/csv/"
     DatePath: "%Y/%m/"
     csvFileName: "%Y%m%d_tower_random.csv"
-    ncStoragePath: "/home/marcus/data/parsivel2/netCDF/"
+    ncStoragePath: "~/data/parsivel2/netCDF/"
     ncConversionDays: 2
 
 Recommended configuration
@@ -38,24 +38,28 @@ instrument.yaml
     parity: "N"
     stopbits: 1
   attributes:
-    Contact_person:
-    Institution:
-    License:
-    Manufacturer:
-    Measurement_altitude_AGL:
-    Measurement_altitude_AMSL:
-    Measurement_latitude:
-    Measurement_longitude:
-    Measurement_site:
-    Model:
-    serial_number:
-    Title:
-    Type:
+    Title: "muster-site Parsivel 1"
+    Author: "Max Mustermann, max.mustermann@test.de"
+    Author_institution: "muster-institut"
+    License_data_recording: "For non-commercial use only"
+    Contact_person: "Max Mustermann, max.mustermann@test.de"
+    Contact_person_institution: "muster-institut, Cologne, Germany"
+    Instrument_manufacturer: "OTT"
+    Instrument_model: "Parsivel2"
+    Instrument_type: "Distrometer"
+    Measurement_site: "Muster-Site"
+    Measurement_latitude:  "50 N"
+    Measurement_longitude: "6 E"
+    Measurement_altitude_AGL: "10"
+    Measurement_altitude_AMSL: "110"
+    Processing_author: "Max Mustermann, max.mustermann@test.de"
+    Processing_author_institution: "muster-institut, Cologne, Germany"
+    License_processing: "For non-commercial use only"  
   storage:
-    csvStoragePath: "/home/marcus/data/parsivel2/csv/"
+    csvStoragePath: "~/data/parsivel2/csv/"
     DatePath: "%Y/%m/"
     csvFileName: "%Y%m%d_tower_random.csv"
-    ncStoragePath: "/home/marcus/data/parsivel2/netCDF/"
+    ncStoragePath: "~/data/parsivel2/netCDF/"
     ncConversionDays: 2
 
 API
