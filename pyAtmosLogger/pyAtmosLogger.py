@@ -1,7 +1,8 @@
 import argparse
-from .instruments.ott_parsivel2_default import *
-from .instruments.pyAtmosLogger_dummy_1 import *
+#from .instruments.ott_parsivel2_default import *
+#from .instruments.pyAtmosLogger_dummy_1 import *
 from .utils.utils import *
+import importlib
 
 
 def pyAtmosLogger():
@@ -14,15 +15,15 @@ def pyAtmosLogger():
     
     args = vars(parser.parse_args())
     # select instrument class
-    instrumentFile = getInstrumentFile(args["path"])
-    if instrumentFile == "pyAtmosLogger_dummy_1.py":
-        instrument = pyAtmosLogger_dummy_1(args["path"])
-    elif instrumentFile == "ott_parsivel2_default.py":
-        instrument = ott_parsivel2_default(args["path"])
+    #instrumentFile = getInstrumentFile(args["path"])
+    config = loadConfig(args["path"])
+    #import instrument file
+    moduleName = config["instrument"]["instrumentFile"][:-3]
+    module = importlib.import_module("pyAtmosLogger.instruments."+moduleName)
+    classObject = getattr(module, moduleName)
+    instrument = classObject(config)
     #check working mode
     if args["mode"] == "log":
         instrument.log()
     if args["mode"] == "convert":
          instrument.convertMultipleFiles()
-
-

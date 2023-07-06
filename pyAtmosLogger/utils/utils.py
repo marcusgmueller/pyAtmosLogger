@@ -24,9 +24,6 @@ def checkNcFolder(configuration, filename):
     storagePath = configuration["storage"]["ncStoragePath"]
     Path(storagePath+datePath).mkdir(parents=True, exist_ok=True)
     return storagePath+datePath+"/"+fileName+".nc"
-def getInstrumentFile(configPath):
-    configuration = loadConfig(configPath)
-    return configuration["instrument"]["instrumentFile"]
 def consoleLog(message):
     now = dt.datetime.utcnow()
     print(now.strftime("%Y-%m-%d %H:%M:%S")+": "+message)

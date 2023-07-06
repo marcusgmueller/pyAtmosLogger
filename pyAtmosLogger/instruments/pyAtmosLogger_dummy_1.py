@@ -16,8 +16,8 @@ class pyAtmosLogger_dummy_1:
     filePath = None
     samplingInterval = None
     
-    def __init__(self,configPath):
-        self.configuration = loadConfig(configPath)
+    def __init__(self,config):
+        self.configuration = config
         self.samplingInterval = self.configuration["instrument"]["samplingInterval"]
         now = dt.datetime.now()
         print(now.strftime("%Y-%m-%d %H:%M:%S")+": setup completed")
