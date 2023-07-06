@@ -8,7 +8,7 @@ import pandas as pd
 import glob
 from ..utils.utils import *
 
-class ott_parsivel2_default:
+class ott_parsivel2_actris:
     """Base class for pyAtmosLogger Dummy 1 Instrument.
 
     Attributes:
