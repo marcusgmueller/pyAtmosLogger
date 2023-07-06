@@ -1,2 +1,2 @@
-from . import ott_parsivel2_default
+from . import ott_parsivel2_actris
 from . import pyAtmosLogger_dummy_1
