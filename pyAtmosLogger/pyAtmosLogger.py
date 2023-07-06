@@ -1,11 +1,17 @@
 import argparse
-#from .instruments.ott_parsivel2_default import *
-#from .instruments.pyAtmosLogger_dummy_1 import *
 from .utils.utils import *
 import importlib
 
+"""
+pyAtmosLogger.py
+================
+The core module of pyAtmosLogger project
+"""
 
 def pyAtmosLogger():
+    """
+    Run pyAtmosLogger from CLI with arguments.
+    """
     parser = argparse.ArgumentParser(
         prog='python3 pyAtmosLogger.py',
         description='Python Package for automatic serial data logging to csv file and converting to netCDF',
@@ -27,3 +33,5 @@ def pyAtmosLogger():
         instrument.log()
     if args["mode"] == "convert":
          instrument.convertMultipleFiles()
+if __name__ == '__main__':
+    pyAtmosLogger()

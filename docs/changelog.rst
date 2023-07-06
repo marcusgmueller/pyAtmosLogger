@@ -1,5 +1,5 @@
 Changelog
-===
+=========
 
 .. autosummary::
    :toctree: generated

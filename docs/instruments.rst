@@ -5,3 +5,4 @@ Supported Instruments
    :maxdepth: 2
 
    instruments/ott_parsivel2_default
+   instruments/pyAtmosLogger_dummy_1

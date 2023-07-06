@@ -9,7 +9,11 @@ import glob
 from ..utils.utils import *
 
 class ott_parsivel2_default:
+    """Base class for Instrument Ott Parsivel 2.
 
+    Attributes:
+        config (str): yaml-string containing pyAtmosLogger configuration
+    """
     configuration = None
     filePath = None
     samplingInterval = None
@@ -21,12 +25,14 @@ class ott_parsivel2_default:
         self.samplingInterval       = self.configuration["instrument"]["samplingInterval"]
         consoleLog("setup completed")
     def serialConnect(self):
+        """Method to establish the serial connection."""
         self.connection             = Serial(self.configuration["instrument"]["port"])
         self.connection.baudrate    = self.configuration["instrument"]["baudrate"]
         self.connection.bytesize    = self.configuration["instrument"]["bytesize"]
         self.connection.parity      = self.configuration["instrument"]["parity"]
         self.connection.stopbits    = self.configuration["instrument"]["stopbits"]
     def log(self):
+        """Method to start logging."""
         self.serialConnect()
         consoleLog("logging started")
         while True:
@@ -52,6 +58,11 @@ class ott_parsivel2_default:
             except:
                 consoleLog("log error")
     def convert(self, file):
+        """Method to convert single-file csv-data to netCDF.
+        
+        Attributes:
+            file (str): file path to csv data
+        """
         consoleLog("converting file: "+file)
         df = pd.read_csv(file, delimiter=";", index_col=False)
         ds = xr.Dataset()
@@ -127,6 +138,7 @@ class ott_parsivel2_default:
         ncFilePath = checkNcFolder(self.configuration, file)        
         ds.to_netcdf(ncFilePath, format="NETCDF4")
     def convertMultipleFiles(self):
+         """Method to convert multiple-file csv-data to netCDF."""
          nDays = self.configuration["storage"]["ncConversionDays"]
          fileList = glob.glob(self.configuration["storage"]["csvStoragePath"]+'/**/*.csv', recursive=True)
          fileList = sorted(fileList)[-nDays:]

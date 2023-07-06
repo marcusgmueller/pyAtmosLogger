@@ -1,7 +1,9 @@
 # Configuration file for the Sphinx documentation builder.
 import sphinx_book_theme
+import sys
+import os
 # -- Project information
-
+sys.path.insert(0, os.path.abspath('..'))
 project = 'pyAtmosLogger'
 copyright = '2023, Müller'
 author = 'Marcus G. Müller'
@@ -17,6 +19,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.napoleon',
 ]
 
 intersphinx_mapping = {

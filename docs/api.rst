@@ -4,7 +4,9 @@ API
 .. autosummary::
    :toctree: generated
 
-   
-.. automodule:: pyAtmosLogger
-   :members:
-   :undoc-members:
+
+.. automodule:: pyAtmosLogger.pyAtmosLogger
+    :members:
+
+
+
