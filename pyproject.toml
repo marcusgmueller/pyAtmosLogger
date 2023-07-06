@@ -1,3 +1,26 @@
+[tool.poetry]
+name = "pyAtmosLogger"
+version = "0.1"
+description = "Python Data Logger for Atmospheric Application"
+authors = ["Marcus G. Müller <marc.mueller@fz-juelich.de>"]
+readme = "README.md"
+packages = [{include = "pyAtmosLogger"}]
+
+
+[tool.poetry.scripts]
+pyAtmosLogger = "pyAtmosLogger.pyAtmosLogger:pyAtmosLogger"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+argparse = "^1.4"
+pyyaml = "^6.0"
+xarray = "^2023.6.0"
+pandas = "^2.0.3"
+sds011 = "^0.2.0"
+pyserial = "^3.5"
+scipy = "^1.7.2"
+numpy = "^1.25.0"
+
 [build-system]
-requires = ['setuptools>=42']
-build-backend = 'setuptools.build_meta'
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,4 +1,4 @@
-Ott Parsivel2 Default
+Ott Parsivel2 ACTRIS
 =====================
 
 Minimal configuration
@@ -8,7 +8,7 @@ instrument.yaml
 .. code-block:: yaml
   
   instrument:
-    instrumentFile: ott_parsivel2_default.py
+    instrumentFile: ott_parsivel2_actris.py
     samplingInterval: 60
     port: "/dev/ttyUSB0"
     baudrate: 19200
@@ -30,7 +30,7 @@ instrument.yaml
 .. code-block:: yaml
   
   instrument:
-    instrumentFile: ott_parsivel2_default.py
+    instrumentFile: ott_parsivel2_actris.py
     samplingInterval: 60
     port: "/dev/ttyUSB0"
     baudrate: 19200
@@ -61,5 +61,5 @@ instrument.yaml
 API
 ---
 
-.. automodule:: pyAtmosLogger.instruments.ott_parsivel2_default
+.. automodule:: pyAtmosLogger.instruments.ott_parsivel2_actris
     :members:
