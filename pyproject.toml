@@ -14,12 +14,12 @@ pyAtmosLogger = "pyAtmosLogger.pyAtmosLogger:pyAtmosLogger"
 python = "^3.9"
 argparse = "^1.4"
 pyyaml = "^6.0"
-xarray = "^2023.6.0"
+xarray = "^2022.03.0"
 pandas = "^2.0.3"
 sds011 = "^0.2.0"
 pyserial = "^3.5"
 scipy = "^1.7.2"
-numpy = "^1.25.0"
+numpy = "^=1.18"
 
 [build-system]
 requires = ["poetry-core"]
