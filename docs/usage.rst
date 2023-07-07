@@ -16,7 +16,7 @@ CLI
 .. code-block:: console
    :caption: convert data to netCDF (run command or schedule it with cron)
 
-   pyAtmosLogger -m log -p <configuration.yaml>
+   pyAtmosLogger -m convert -p <configuration.yaml>
 
 
 Python
