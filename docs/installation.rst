@@ -23,10 +23,22 @@ via Git
 
    git clone https://github.com/marcusgmueller/pyAtmosLogger.git
 
-2. install pyAtmosLogger
+2. change into directory
+
+3. install pyAtmosLogger
 
 .. code-block:: console
 
    pip install .
 
+Download
+--------
+1. download current release from https://github.com/marcusgmueller/pyAtmosLogger/releases
 
+2. change into directory
+
+3. install pyAtmosLogger
+
+.. code-block:: console
+
+   pip install .
