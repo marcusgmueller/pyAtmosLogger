@@ -1,5 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation Status](https://readthedocs.org/projects/pyatmoslogger/badge/?version=latest)](https://pyatmoslogger.readthedocs.io/en/latest/?badge=latest)
+[![DOI](https://zenodo.org/badge/633838435.svg)](https://zenodo.org/badge/latestdoi/633838435)
 
 <img src="docs/_static/images/pyAtmosLogger.png" width="200" style="margin: 20px 10px"/>
 
