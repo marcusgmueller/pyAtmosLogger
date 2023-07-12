@@ -1,11 +1,14 @@
 [tool.poetry]
 name = "pyAtmosLogger"
-version = "0.1"
+version = "0.2"
 description = "Python Data Logger for Atmospheric Application"
-authors = ["Marcus G. Müller <marc.mueller@fz-juelich.de>"]
+authors = ["Marcus G. Müller"]
 readme = "README.md"
 packages = [{include = "pyAtmosLogger"}]
-
+license = "MIT"
+homepage = "https://github.com/marcusgmueller/pyAtmosLogger"
+repository = "https://github.com/marcusgmueller/pyAtmosLogger"
+documentation = https://pyatmoslogger.readthedocs.io/en/latest/index.html
 
 [tool.poetry.scripts]
 pyAtmosLogger = "pyAtmosLogger.pyAtmosLogger:pyAtmosLogger"
