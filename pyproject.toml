@@ -8,7 +8,7 @@ packages = [{include = "pyAtmosLogger"}]
 license = "MIT"
 homepage = "https://github.com/marcusgmueller/pyAtmosLogger"
 repository = "https://github.com/marcusgmueller/pyAtmosLogger"
-documentation = https://pyatmoslogger.readthedocs.io/en/latest/index.html
+documentation = "https://pyatmoslogger.readthedocs.io/en/latest/index.html"
 
 [tool.poetry.scripts]
 pyAtmosLogger = "pyAtmosLogger.pyAtmosLogger:pyAtmosLogger"
