@@ -11,7 +11,7 @@ via pip
 
 .. code-block:: console
 
-   pip install "pyAtmosLogger @ git+https://github.com/marcusgmueller/pyAtmosLogger"
+   pip install pyAtmosLogger
 
 
 
