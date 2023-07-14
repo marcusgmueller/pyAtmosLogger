@@ -27,3 +27,13 @@ def checkNcFolder(configuration, filename):
 def consoleLog(message):
     now = dt.datetime.utcnow()
     print(now.strftime("%Y-%m-%d %H:%M:%S")+": "+message)
+def getPyAtmosLoggerAttributes():
+    now = dt.datetime.utcnow()
+    dict = {
+        "Processing_date_utc": now.strftime("%Y-%m-%d %H:%M:%S") ,
+        "Processing_software": "pyAtmosLogger",
+        "Processing_software_version": "v0.3",
+        "Processing_software_repository": "https://github.com/marcusgmueller/pyAtmosLogger",
+        "Processing_software_doi": "10.5281/zenodo.8138038"
+    }
+    return dict
