@@ -179,10 +179,10 @@ class ott_parsivel2_actris:
         for attr in self.configuration["attributes"]:
             ds.attrs[attr] = self.configuration["attributes"][attr]
         now = dt.datetime.now()
-        ds.attrs["Processing_date"] = now.strftime("%Y-%m-%d %H:%M:%S") 
-        ds.attrs["Processing_software"] = "pyAtmosLogger"
-        ds.attrs["Processing_software_version"] = "v0.1"
         ds.attrs["Instrument_serial_number"] = ds.serial_no[1]
+        dsAttributes = ds.attrs
+        dsAttributes.update(getPyAtmosLoggerAttributes())
+        ds.attrs = dsAttributes
         #save file
         ncFilePath = checkNcFolder(self.configuration, file)        
         ds.to_netcdf(ncFilePath, format="NETCDF4")
