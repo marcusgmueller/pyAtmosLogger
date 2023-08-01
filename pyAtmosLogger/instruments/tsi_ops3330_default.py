@@ -48,12 +48,12 @@ class tsi_ops3330_default:
         command = command + "\r"
         try:
             self.connection.send(bytes(command,'ascii'))
-            time.sleep(15)
+            time.sleep(2)
             return self.connection.recv(1024).decode('ascii')
         except:
             self.opsConnect()
             self.connection.send(bytes(command,'ascii'))
-            time.sleep(15)
+            time.sleep(2)
             return self.connection.recv(1024).decode('ascii')
     def opsLockDevice(self):
         """Method to lock device."""
@@ -86,27 +86,28 @@ class tsi_ops3330_default:
         """Method to start logging."""
         self.opsConnect()
         self.opsCommand("WMODECHSETUP "+self.channelSetup)
+        self.opsCommand("WMODELOG 0:0,0/0/0,0:0:"+str(self.samplingDuration)+",1,1,0:0:1,0,0,0,0,0,0")
         consoleLog("logging started")
         while True:
-            try:
-                now = datetime.datetime.utcnow()
-                self.filePath = checkCsvFolder(self.configuration, now)
-                if not os.path.isfile(self.filePath):
-                    self.createNewDataFile()
-                #get data
-                self.opsCommand("MSTART")
-                time.sleep(self.samplingDuration)
-                #get data
-                measurement = self.opsCommand("RMLOGGEDMEAS")
-                measurement = measurement[2:-2].replace(",\r\n",",").replace("\r\n",",")
-                measurement = now.strftime("%Y-%m-%d %H:%M:%S")+","+measurement+"\n"
-                #write to file
-                f = open(self.filePath,'a')
-                f.write(measurement)
-                f.close()
-                time.sleep(self.samplingInterval-self.samplingDuration)
-            except:
-                consoleLog("log error")
+            #try:
+            now = datetime.datetime.utcnow()
+            self.filePath = checkCsvFolder(self.configuration, now)
+            if not os.path.isfile(self.filePath):
+                self.createNewDataFile()
+            #get data
+            self.opsCommand("MSTART")
+            time.sleep(self.samplingDuration+5)
+            #get data
+            measurement = self.opsCommand("RMLOGGEDMEAS")
+            measurement = measurement[2:-2].replace(",\r\n",",").replace("\r\n",",")
+            measurement = now.strftime("%Y-%m-%d %H:%M:%S")+","+measurement+"\n"
+            #write to file
+            f = open(self.filePath,'a')
+            f.write(measurement)
+            f.close()
+            time.sleep(self.samplingInterval-5-self.samplingDuration)
+            #except:
+            #    consoleLog("log error")
     def convert(self, file):
         """Method to convert single-file csv-data to netCDF.
         
@@ -212,10 +213,11 @@ class tsi_ops3330_default:
             ds.attrs[attr] = self.configuration["attributes"][attr]
         dsAttributes = ds.attrs
         dsAttributes.update(getPyAtmosLoggerAttributes())
+        dsAttributes.update(attributes)
         ds.attrs = dsAttributes
         #save file
         ncFilePath = checkNcFolder(self.configuration, file)        
-        ds.to_netcdf(ncFilePath, format="NETCDF4")
+        ds.to_netcdf(ncFilePath, format="NETCDF3_CLASSIC")
     def convertMultipleFiles(self):
          """Method to convert multiple-file csv-data to netCDF."""
          nDays = self.configuration["storage"]["ncConversionDays"]

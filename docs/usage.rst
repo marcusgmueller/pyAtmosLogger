@@ -25,7 +25,7 @@ Python
 .. nbinput:: ipython3
     :execution-count: 1
 
-    import pyAtmosLogger
+    import import pyAtmosLogger.instruments.pyAtmosLogger_dummy_1 as instrumentClass
     import yaml
 
 .. nbinput:: ipython3
@@ -49,8 +49,7 @@ Python
 .. nbinput:: ipython3
     :execution-count: 3
 
-    instrument = pyAtmosLogger.pyAtmosLogger_dummy_1.pyAtmosLogger_dummy_1(config)
-
+    instrument = instrumentClass.pyAtmosLogger_dummy_1(config)
 .. nboutput::
     :execution-count: 3
 
