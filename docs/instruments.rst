@@ -6,3 +6,5 @@ Supported Instruments
 
    instruments/ott_parsivel2_actris
    instruments/pyAtmosLogger_dummy_1
+   instruments/tsi_ops3330_default
+   instruments/bronkhorst_mfc_default

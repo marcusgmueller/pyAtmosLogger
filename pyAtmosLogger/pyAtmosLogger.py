@@ -18,8 +18,8 @@ def pyAtmosLogger():
     )
     parser.add_argument("-m", "--mode", help = "selct operation mode", choices=["log", "convert"], default="log")
     parser.add_argument("-p", "--path", help = "path to config file", required=True)
-    
     args = vars(parser.parse_args())
+    printCLIHeader()
     # select instrument class
     #instrumentFile = getInstrumentFile(args["path"])
     config = loadConfig(args["path"])
