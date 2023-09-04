@@ -7,6 +7,7 @@ import xarray as xr
 import pandas as pd
 import glob
 from ..utils.utils import *
+import pause
 
 class ott_parsivel2_actris:
     """Base class for pyAtmosLogger Dummy 1 Instrument.
@@ -54,7 +55,7 @@ class ott_parsivel2_actris:
                 dataString   = now.strftime("%Y-%m-%d %H:%M:%S")+";"+data.decode()
                 f.write(str(dataString).rstrip('\n'))
                 f.close()
-                time.sleep(self.samplingInterval)
+                pause.until(now+datetime.timedelta(self.samplingInterval))
             except:
                 consoleLog("log error")
     def convert(self, file):
