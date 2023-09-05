@@ -5,6 +5,7 @@ import os
 import importlib
 import time
 import datetime as dt
+import tzlocal
 
 def loadConfig(configPath):
     with open(configPath, 'r') as file:
@@ -27,12 +28,14 @@ def checkNcFolder(configuration, filename):
 def consoleLog(message):
     now = dt.datetime.utcnow()
     print(now.strftime("%Y-%m-%d %H:%M:%S")+": "+message)
+def getLocalTZ():
+    return tzlocal.get_localzone()
 def getPyAtmosLoggerAttributes():
     now = dt.datetime.utcnow()
     dict = {
         "Processing_date_utc": now.strftime("%Y-%m-%d %H:%M:%S") ,
         "Processing_software": "pyAtmosLogger",
-        "Processing_software_version": "v0.3",
+        "Processing_software_version": "v0.4",
         "Processing_software_repository": "https://github.com/marcusgmueller/pyAtmosLogger",
         "Processing_software_doi": "10.5281/zenodo.8138038"
     }

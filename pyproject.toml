@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyAtmosLogger"
-version = "0.3"
+version = "0.4"
 description = "Python Data Logger for Atmospheric Application"
 authors = ["Marcus G. Müller"]
 readme = "README.md"
@@ -23,6 +23,9 @@ pySerial        = "*"
 scipy           = "*"
 numpy           = "*"
 minimalmodbus   = "*"
+pause           = "*"
+pytz            = "*"
+tzlocal         = "*"
 
 
 [build-system]
