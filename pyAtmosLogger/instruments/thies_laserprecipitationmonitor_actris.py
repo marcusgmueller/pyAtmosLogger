@@ -10,7 +10,7 @@ from ..utils.utils import *
 import pause
 import pytz
 
-class ott_parsivel2_actris:
+class thies_laserprecipitationmonitor_actris:
     """Base class for pyAtmosLogger Dummy 1 Instrument.
 
     Attributes:
