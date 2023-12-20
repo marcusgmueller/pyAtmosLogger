@@ -47,7 +47,7 @@ class thies_laserprecipitationmonitor_actris:
             "1min_max_hail_diam [mm]",
 
             "Status Laser (OK/on:0, off:1)",
-            "Static signal (OK:0, Error:1)",
+            "Status signal (OK:0, Error:1)",
             "Status Laser temperature (OK:0, Error:1)",
             "Status Laser temperature (OK:0, Error:1)",
             "Status Laser current (OK:0, Error:1)",
@@ -185,7 +185,7 @@ class thies_laserprecipitationmonitor_actris:
                 "1min_max_hail_diam [mm]",
 
                 "Status Laser (OK/on:0, off:1)",
-                "Static signal (OK:0, Error:1)",
+                "Status signal (OK:0, Error:1)",
                 "Status Laser temperature (OK:0, Error:1)",
                 "Status Laser temperature (OK:0, Error:1)",
                 "Status Laser current (OK:0, Error:1)",
@@ -257,13 +257,13 @@ class thies_laserprecipitationmonitor_actris:
                 "measuring",
                 "hail_dim",
 
-                "status_Laser",
-                "static_signal",
-                "status_Laser_temp1",
-                "status_Laser_temp2",
-                "status_Laser_current1",
-                "status_Laser_current2",
-                "status_Sensor_supply",
+                "status_laser",
+                "status_signal",
+                "status_laser_temp1",
+                "status_laser_temp2",
+                "status_laser_current1",
+                "status_laser_current2",
+                "status_sensor",
                 "status_heating_laser",
                 "status_heating_receiver",
                 "status_temp_sensor",
@@ -278,7 +278,7 @@ class thies_laserprecipitationmonitor_actris:
                 "laser_current",
                 "control_voltage",
                 "opt_cont_out",
-                "vol_sensor_supply",
+                "volt_sensor",
                 "current_heating_laser",
                 "current_heating_receiver",
                 "temp",
@@ -313,11 +313,10 @@ class thies_laserprecipitationmonitor_actris:
         singleDimensionDF.set_index(["time"], inplace=True)
         newDs = singleDimensionDF.to_xarray()
         ds = ds.merge(newDs)
+        
         #2D-Fields
         keys            = ["N", "v"]
         classKeys       = ["ved_class", "rof_class"]
-
-
         for iKey in range(2):
             datetimeList = []
             classList    = []
@@ -330,29 +329,30 @@ class thies_laserprecipitationmonitor_actris:
             newDF = pd.DataFrame(list(zip(datetimeList, classList, valueList)), columns =['time', classKeys[iKey], keys[iKey]])
             newDF.set_index(['time', classKeys[iKey]], inplace=True)
             ds = ds.merge(newDF.to_xarray())
-        #3D-Fields
-        datetimeList    = []
-        vedClassList      = []
-        rofClassList      = []
-        MList           = []
+       
+        # #3D-Fields
+        # datetimeList    = []
+        # vedClassList      = []
+        # rofClassList      = []
+        # MList           = []
 
-        for entry in df.iterrows():     #date
-            for i in range(32):         #d_class
-                for j in range(32):     #v_class
-                    datetimeList.append(pd.to_datetime(entry[1]["datetime_utc"], format = '%Y-%m-%d %H:%M:%S'))
-                    vedClassList.append(j)
-                    rofClassList.append(i)
-                    MList.append(entry[1]["M_"+str(i)+"_"+str(j)])
-        newDF = pd.DataFrame(list(zip(datetimeList, vedClassList, rofClassList, MList)), columns =['time', 'ved_class', 'rof_class', "M"])
+        # for entry in df.iterrows():     #date
+        #     for i in range(32):         #d_class
+        #         for j in range(32):     #v_class
+        #             datetimeList.append(pd.to_datetime(entry[1]["datetime_utc"], format = '%Y-%m-%d %H:%M:%S'))
+        #             vedClassList.append(j)
+        #             rofClassList.append(i)
+        #             MList.append(entry[1]["M_"+str(i)+"_"+str(j)])
+        # newDF = pd.DataFrame(list(zip(datetimeList, vedClassList, rofClassList, MList)), columns =['time', 'ved_class', 'rof_class', "M"])
 
         newDF.set_index(["time", "ved_class","rof_class"], inplace=True)
         
         # define some additional vectors
-        vclasses = xr.DataArray([0.05, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95, 1.1, 1.3, 1.5, 1.7, 1.9, 2.2, 2.6, 3, 3.4, 3.8, 4.4, 5.2, 6, 6.8, 7.6, 8.8, 10.4, 12, 13.6, 15.2, 17.6, 20.8], dims=('ved_class'), coords=[ds.ved_class] )
-        dclasses = xr.DataArray([0.062, 0.187, 0.312, 0.437, 0.562, 0.687, 0.812, 0.937, 1.062, 1.187, 1.375, 1.625, 1.875, 2.125, 2.375, 2.75, 3.25, 3.75, 4.25, 4.75, 5.5, 6.5, 7.5, 8.5, 9.5, 11, 13, 15, 17, 19, 21.5, 24.5], dims=('rof_class'), coords=[ds.rof_class] )        
-        vwidth   = xr.DataArray([0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 0.4, 0.8, 0.8, 0.8, 0.8, 0.8, 1.6, 1.6, 1.6, 1.6, 1.6, 3.2, 3.2], dims=('ved_class'), coords=[ds.ved_class] )        
-        dwidth   = xr.DataArray([0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.25, 0.25, 0.25, 0.25, 0.25, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3], dims=('rof_class'), coords=[ds.rof_class] )          
-
+        vclasses = xr.DataArray([0.1, 0.3, 0.5, 0.7, 0.9, 1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.8, 4.6, 5.4, 6.2, 7.0, 7.8, 8.8, 9.5, 15.0], dims=('ved_class'), coords=[ds.ved_class] )
+        vwidth   = xr.DataArray([0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 1.0, 10.0], dims=('ved_class'), coords=[ds.ved_class] )        
+        
+        dclasses = xr.DataArray([0.0625, 0.1875, 0.3125, 0.375, 0.625, 8.75, 1.25, 1.375, 1.625, 2.250, 2.75, 3.25, 3.75, 4.25, 4.75, 5.25, 5.75, 6.25, 6.75, 7.25, 7.75, 12.0], dims=('rof_class'), coords=[ds.rof_class] )        
+        dwidth   = xr.DataArray([ 0.125,  0.125,  0.125,  0.25,  0.25, 0.25, 0.25,  0.25,  0.25,   0.5,  0.5,  0.5,  0.5,  0.5,  0.5,  0.5,  0.5,  0.5,  0.5,  0.5,  0.5, 8.0 ], dims=('rof_class'), coords=[ds.rof_class] )          
         # put variables into DataSet
         ds = ds.merge(newDF.to_xarray())
         # add additional varaibles
@@ -376,11 +376,15 @@ class thies_laserprecipitationmonitor_actris:
                                        'long_name': "visibility_in_air"}
         ds.n_particles.attrs        = {'units': '1', 
                                        'long_name': "number of detected particles"}
-        ds.T_sensor.attrs           = {'units': 'deg C',
+        ds.interior_temp.attrs      = {'units': 'deg C',
                                        'long_name': "temperature_of_sensor"}       
-        ds.version.attrs            = {'description': 'IOP firmware version'}
-        ds.curr_heating.attrs       = {'units': 'A', 
-                                       'long_name': 'Current of heating system'}
+        ds.version.attrs            = {'description': 'IOP firmware version'}       
+        ds.current_heating_housing.attrs  = {'units': 'A', 
+                                       'long_name': 'Current of heating housing of the system'}
+        ds.current_heating_heads.attrs  = {'units': 'A', 
+                                       'long_name': 'Current of heating instrument heads'}
+        ds.current_heating_carriers.attrs  = {'units': 'A', 
+                                       'long_name': 'Current of heating carrier of the system'}
         ds.volt_sensor.attrs        = {'units': 'V', 
                                        'long_name': 'Power supply voltage of the sensor'}
         ds.rain_absolut.attrs       = {'units': 'km m-2',
@@ -392,16 +396,25 @@ class thies_laserprecipitationmonitor_actris:
         ds.v.attrs                  = {'units': 'm s-1', 
                                        'long_name': "mean falling velocity per diameter class",
                                        'description': 'average rate of fall (rof)'}
-        ds.M.attrs                  = {'units': '1', 
-                                       'long_name': "number of particles per volume equivalent diameter class and fall velocity class",
-                                       'description': 'raw data matrix. number of particles per volume diameter and fall velocity'}
+        # ds.M.attrs                  = {'units': '1', 
+        #                                'long_name': "number of particles per volume equivalent diameter class and fall velocity class",
+        #                                'description': 'raw data matrix. number of particles per volume diameter and fall velocity'}
         ds.ved_class.attrs          = {'units': '', 
                                        'description': 'volume equivalent diameter (ved) class'}
         ds.rof_class.attrs          = {'units': '', 
                                        'description': 'average rate of fall (rof) class'}
         ds.status_sensor.attrs      = {'units': "1" ,
                                        'long_name': "Status of the Sensor" ,
-                                       'comments': "0: everything OK, 1: Laser protective glass is dirty, but measurements are still possible, 2: Laser protective glass is dirty, partially covered. No further usable measurements are possible."}
+                                       'comments': "0: everything OK, 1: Error."}
+        ds.status_laser.attrs       = {'units': "1" ,
+                                       'long_name': "Status of the Sensor" ,
+                                       'comments': "0: everything OK, 1: Error."}
+        ds.status_temp_sensor.attrs = {'units': "1" ,
+                                       'long_name': "Status of the Sensor" ,
+                                       'comments': "0: everything OK, 1: Error."}
+        ds.status_heating_supply.attrs = {'units': "1" ,
+                                       'long_name': "Status of the Sensor" ,
+                                       'comments': "0: everything OK, 1: Error."}
         ds.vclasses.attrs            = {'units': "m s-1" ,
  		                               'long_name': "velocity class center"}
         ds.dclasses.attrs            = {'units': "mm" ,
