@@ -106,7 +106,7 @@ class thies_laserprecipitationmonitor_actris:
         return header
     
     csvHeader = create_thies_header()
-    serialWriteString = b'CS/TR00004\r\n' # We would lie to use data protocol 4 and use the polling of the data transfere
+    serialWriteString = b'00TR00004\r\n' # We would lie to use data protocol 4 and use the polling of the data transfere
     #serialInitialString = b'00BR22/CS/\r\n'# b'TR00004/CS\r\n' # Check baudrate for the instrument do we have to set them here or do we use the already set one? And if the polling request is the right on
     localTimeZone = ""
     def __init__(self,config):
