@@ -9,6 +9,7 @@ import glob
 from ..utils.utils import *
 import pause
 import pytz
+import numpy as np
 
 class thies_laserprecipitationmonitor_actris:
     """Base class for pyAtmosLogger Dummy 1 Instrument.
@@ -103,6 +104,8 @@ class thies_laserprecipitationmonitor_actris:
             for i in range(0, 22 * 20)
         ]
         header += ["checksum", "CLRF"]
+        header =  ';'.join(header)
+        header = header+"\n"
         return header
     
     csvHeader = create_thies_header()
@@ -127,30 +130,27 @@ class thies_laserprecipitationmonitor_actris:
         consoleLog("instrument configured")
         consoleLog("logging started")
         while True:
-            try:
-                now = datetime.datetime.utcnow()
-                self.filePath = checkCsvFolder(self.configuration, now)
-                if not os.path.isfile(self.filePath):
-                    f = open(self.filePath, 'w')
-                    f.write(self.csvHeader)
-                    f.close()
-                    print(now.strftime("%Y-%m-%d %H:%M:%S")+": header created")
-                f = open(self.filePath, 'a')
-                #get data
-                if self.connection.is_open == False:
-                    self.serialConnect()
-                    consoleLog("reconnected")
-                self.connection.write(self.serialWriteString)
-                data = self.connection.readline()
-                dataString      = now.strftime("%Y-%m-%d %H:%M:%S")+";"+data.decode()
-                dataString_drop = dataString.drop(columns=['Date of the sensor (tt.mm.jj)', 'Time of the sensor (on request)']) # deleat the instrument time stamp?
-                f.write(str(dataString_drop).rstrip('\n'))
-                f.close()
-                newDT = now+datetime.timedelta(seconds=self.samplingInterval)
-                newDT = newDT.replace(tzinfo=pytz.utc).astimezone(self.localTimeZone)
-                pause.until(newDT)
-            except:
-                consoleLog("log error")
+            now = datetime.datetime.utcnow()
+            self.filePath = checkCsvFolder(self.configuration, now)
+            if not os.path.isfile(self.filePath):
+                 f = open(self.filePath, 'w')
+                 f.write(self.csvHeader)
+                 f.close()
+                 print(now.strftime("%Y-%m-%d %H:%M:%S")+": header created")
+            f = open(self.filePath, 'a')
+            #get data
+            if self.connection.is_open == False:
+                 self.serialConnect()
+                 consoleLog("reconnected")
+            self.connection.write(self.serialWriteString)
+            data = self.connection.readline()
+            dataString      = now.strftime("%Y-%m-%d %H:%M:%S")+";"+data.decode()
+            dataString_drop = dataString#.drop(columns=['Date of the sensor (tt.mm.jj)', 'Time of the sensor (on request)']) # deleat the instrument time stamp?
+            f.write(str(dataString)+"\n")
+            f.close()
+            newDT = now+datetime.timedelta(seconds=self.samplingInterval)
+            newDT = newDT.replace(tzinfo=pytz.utc).astimezone(self.localTimeZone)
+            pause.until(newDT)
     
     def convert(self, file):
         """Method to convert single-file csv-data to netCDF.
