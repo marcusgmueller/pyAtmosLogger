@@ -103,7 +103,7 @@ class thies_laserprecipitationmonitor_actris:
             "diam_" + str(int(np.floor(i / 20) + 1)) + "_speed_" + str(int((i % 20) + 1))
             for i in range(0, 22 * 20)
         ]
-        header += ["checksum", "CLRF"]
+        header += ["checksum"]
         header =  ';'.join(header)
         header = header+"\n"
         return header
@@ -145,7 +145,7 @@ class thies_laserprecipitationmonitor_actris:
             self.connection.write(self.serialWriteString)
             data = self.connection.readline()
             dataString      = now.strftime("%Y-%m-%d %H:%M:%S")+";"+data.decode()
-            dataString_drop = dataString#.drop(columns=['Date of the sensor (tt.mm.jj)', 'Time of the sensor (on request)']) # deleat the instrument time stamp?
+            dataString = dataString.replace("\x02", "").replace("\x03", "").replace("\x13", "").replace("\x10", "")
             f.write(str(dataString)+"\n")
             f.close()
             newDT = now+datetime.timedelta(seconds=self.samplingInterval)
