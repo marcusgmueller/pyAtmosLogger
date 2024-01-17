@@ -145,7 +145,7 @@ class thies_laserprecipitationmonitor_actris:
             self.connection.write(self.serialWriteString)
             data = self.connection.readline()
             dataString      = now.strftime("%Y-%m-%d %H:%M:%S")+";"+data.decode()
-            dataString = dataString.replace("\x02", "").replace("\x03", "").replace("\x13", "").replace("\x10", "")
+            dataString = dataString.replace("\r", "").replace("\n", "").replace("\x13", "").replace("\x10", "")
             f.write(str(dataString)+"\n")
             f.close()
             newDT = now+datetime.timedelta(seconds=self.samplingInterval)
