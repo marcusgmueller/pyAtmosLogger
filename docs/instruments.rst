@@ -8,3 +8,4 @@ Supported Instruments
    instruments/pyAtmosLogger_dummy_1
    instruments/tsi_ops3330_default
    instruments/bronkhorst_mfc_default
+   instruments/thies_laserprecipitationmonitor_actris
