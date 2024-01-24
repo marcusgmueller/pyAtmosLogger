@@ -114,7 +114,7 @@ class ott_parsivel2_actris:
         newDF = pd.DataFrame(list(zip(datetimeList, vedClassList, rofClassList, MList)), columns =['time', 'ved_class', 'rof_class', "M"])
 
         newDF.set_index(["time", "ved_class","rof_class"], inplace=True)
-        
+
         # define some additional vectors
         vclasses = xr.DataArray([0.05, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95, 1.1, 1.3, 1.5, 1.7, 1.9, 2.2, 2.6, 3, 3.4, 3.8, 4.4, 5.2, 6, 6.8, 7.6, 8.8, 10.4, 12, 13.6, 15.2, 17.6, 20.8], dims=('ved_class'), coords=[ds.ved_class] )
         dclasses = xr.DataArray([0.062, 0.187, 0.312, 0.437, 0.562, 0.687, 0.812, 0.937, 1.062, 1.187, 1.375, 1.625, 1.875, 2.125, 2.375, 2.75, 3.25, 3.75, 4.25, 4.75, 5.5, 6.5, 7.5, 8.5, 9.5, 11, 13, 15, 17, 19, 21.5, 24.5], dims=('rof_class'), coords=[ds.rof_class] )        
@@ -128,7 +128,7 @@ class ott_parsivel2_actris:
         ds["dclasses"] = dclasses 
         ds["vwidth"]   = vwidth 
         ds["dwidth"]   = dwidth         
-        
+
         #set attributes
         ds.rr.attrs                 = {'units': 'mm h-1',
                                        'long_name': "rainfall_rate"}    
@@ -181,7 +181,7 @@ class ott_parsivel2_actris:
  		                               'long_name': "velocity class width"}
         ds.dwidth.attrs              = {'units': "mm" ,
  		                               'long_name': "volume equivalent diameter class width"}
-        
+
         for attr in self.configuration["attributes"]:
             ds.attrs[attr] = self.configuration["attributes"][attr]
         now = dt.datetime.now()
