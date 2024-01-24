@@ -2,7 +2,6 @@ import sys
 sys.path.append('../../pyAtmosLogger')
 sys.path.append("..")
 from ..utils.utils import *
-import sds011 as sds011Package
 import datetime as dt
 import time
 import random
