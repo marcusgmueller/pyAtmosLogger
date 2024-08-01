@@ -35,7 +35,7 @@ def getPyAtmosLoggerAttributes():
     dict = {
         "Processing_date_utc": now.strftime("%Y-%m-%d %H:%M:%S") ,
         "Processing_software": "pyAtmosLogger",
-        "Processing_software_version": "v0.5",
+        "Processing_software_version": "v0.6",
         "Processing_software_repository": "https://github.com/marcusgmueller/pyAtmosLogger",
         "Processing_software_doi": "10.5281/zenodo.8138038"
     }

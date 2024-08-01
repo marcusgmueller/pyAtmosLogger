@@ -185,7 +185,7 @@ class ott_parsivel2_actris:
         for attr in self.configuration["attributes"]:
             ds.attrs[attr] = self.configuration["attributes"][attr]
         now = dt.datetime.now()
-        ds.attrs["Instrument_serial_number"] = ds.serial_no[1]
+        ds.attrs["Instrument_serial_number"] = str(ds.serial_no[1])
         dsAttributes = ds.attrs
         dsAttributes.update(getPyAtmosLoggerAttributes())
         ds.attrs = dsAttributes
