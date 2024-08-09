@@ -191,7 +191,7 @@ class ott_parsivel2_actris:
         ds.attrs = dsAttributes
         #save file
         ncFilePath = checkNcFolder(self.configuration, file)        
-        ds.to_netcdf(ncFilePath, format="NETCDF4")
+        ds.to_netcdf(ncFilePath, format="NETCDF3_CLASSIC")
     def convertMultipleFiles(self):
          """Method to convert multiple-file csv-data to netCDF."""
          nDays = self.configuration["storage"]["ncConversionDays"]
